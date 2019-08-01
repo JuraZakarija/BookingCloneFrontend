@@ -3,14 +3,14 @@
       <thead>
           <tr>
               <th scope="col">#</th>
-              <th scope="col">CheckIn</th>
-              <th scope="col">CheckOut</th>
+              <th scope="col">Datum prijave</th>
+              <th scope="col">Datum odjave</th>
           </tr>
       </thead>
       <tbody>
           <tr *ngFor="let booking of bookings; let i = index">
               <th scope="row">{{i+1}}</th>
-              <td>{{ booking.checkIn | date: "longDate"}}</td>
+              <td>{{ booking.checkIn | date: "longDate" }}</td>
               <td>{{ booking.checkOut | date: "longDate" }}</td>
           </tr>
       </tbody>

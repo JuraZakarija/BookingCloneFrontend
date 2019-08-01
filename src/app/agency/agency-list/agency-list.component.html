@@ -3,15 +3,15 @@
       <thead>
           <tr>
               <th scope="col">#</th>
-              <th scope="col">Name</th>
-              <th scope="col">Commission</th>
+              <th scope="col">Ime agencije</th>
+              <th scope="col">Provizija</th>
           </tr>
       </thead>
       <tbody>
           <tr *ngFor="let agency of agencies; let i = index">
               <th scope="row">{{i+1}}</th>
               <td>{{ agency.name }}</td>
-              <td>{{ agency.commission }}</td>
+              <td>{{ agency.commission + " %"}}</td>
           </tr>
       </tbody>
   </table>

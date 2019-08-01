@@ -13,7 +13,6 @@ import { RoomModule } from './room/room.module';
 
 import { HttpClientModule } from '@angular/common/http';
 
-
 @NgModule({
   declarations: [
     AppComponent

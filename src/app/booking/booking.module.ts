@@ -5,6 +5,7 @@ import { BookingRoutingModule } from './booking-routing.module';
 import { BookingListComponent } from './booking-list/booking-list.component';
 
 
+
 @NgModule({
   declarations: [BookingListComponent],
   imports: [
