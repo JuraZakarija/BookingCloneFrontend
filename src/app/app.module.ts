@@ -11,6 +11,9 @@ import { HotelModule } from './hotel/hotel.module';
 import { PaymentModule } from './payment/payment.module';
 import { RoomModule } from './room/room.module';
 
+import { HttpClientModule } from '@angular/common/http';
+
+
 @NgModule({
   declarations: [
     AppComponent
