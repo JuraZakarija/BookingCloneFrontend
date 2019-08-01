@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PaymentService } from '../payment.service';
 
 @Component({
   selector: 'app-payment-list',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PaymentListComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private paymentService: PaymentService
+  ) { }
+
+  public payments = [];
 
   ngOnInit() {
+    this.paymentService.getAll().subscribe((response: any) => {
+      this.payments = response;
+    });
   }
-
 }

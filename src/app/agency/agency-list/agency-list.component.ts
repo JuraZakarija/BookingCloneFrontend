@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AgencyService } from '../agency.service';
+
 
 @Component({
   selector: 'app-agency-list',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AgencyListComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private agencyService: AgencyService
+  ) { }
+
+  public agencies = [];
 
   ngOnInit() {
+    this.agencyService.getAll().subscribe((response: any) => {
+      this.agencies = response;
+    });
   }
-
 }

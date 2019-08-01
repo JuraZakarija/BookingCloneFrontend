@@ -26,7 +26,8 @@ import { HttpClientModule } from '@angular/common/http';
     GuestModule,
     HotelModule,
     PaymentModule,
-    RoomModule
+    RoomModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

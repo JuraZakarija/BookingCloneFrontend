@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { GuestService } from '../guest.service';
 
 @Component({
   selector: 'app-guest-list',
@@ -7,9 +8,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GuestListComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private guestService: GuestService
+  ) { }
+
+  public guests = [];
 
   ngOnInit() {
+    this.guestService.getAll().subscribe((response: any) => {
+      this.guests = response;
+    });
   }
-
 }

@@ -1,1 +1,26 @@
-<p>guest-list works!</p>
+<div>
+  <table class="table">
+      <thead>
+          <tr>
+              <th scope="col">#</th>
+              <th scope="col">Ime</th>
+              <th scope="col">Prezime</th>
+              <th scope="col">Datum rođenja</th>
+              <th scope="col">Spol</th>
+              <th scope="col">Kontakt</th>
+              <th scope="col">Email</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let guest of guests; let i = index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{ guest.firstName }}</td>
+              <td>{{ guest.lastName }}</td>
+              <td>{{ guest.birthdate }}</td>
+              <td>{{ guest.gender }}</td>
+              <td>{{ guest.phoneNumber }}</td>
+              <td>{{ guest.email }}</td>
+          </tr>
+      </tbody>
+  </table>
+</div>

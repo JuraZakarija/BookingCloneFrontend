@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BookingService } from '../booking.service';
+
 
 @Component({
   selector: 'app-booking-list',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BookingListComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private bookingService: BookingService
+  ) { }
+
+  public bookings = [];
 
   ngOnInit() {
+    this.bookingService.getAll().subscribe((response: any) => {
+      this.bookings = response;
+    });
   }
-
 }

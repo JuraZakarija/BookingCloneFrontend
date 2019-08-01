@@ -1,1 +1,20 @@
-<p>room-list works!</p>
+<div>
+  <table class="table">
+      <thead>
+          <tr>
+              <th scope="col">#</th>
+              <th scope="col">Veličina</th>
+              <th scope="col">Broj kreveta</th>
+              <th scope="col">Tip</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let room of rooms; let i = index">
+              <th scope="row">{{i+1}}</th>
+              <td>{{ room.size }}</td>
+              <td>{{ room.numberOfBeds }}</td>
+              <td>{{ room.type }}</td>
+          </tr>
+      </tbody>
+  </table>
+</div>
