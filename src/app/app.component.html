@@ -1,4 +1,37 @@
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:cadetblue">
+<!-- Top Bar -->
+<section id="top-bar" class="p-3">
+  <div class="container">
+      <div class="row">
+          <div class="col-md-4">
+              <i class="fas fa-phone"></i> 01 6335 456
+          </div>
+          <div class="col-md-4">
+              <i class="fas fa-envelope-open"></i> contact@BookingClone.hr
+          </div>
+          <div class="col-md-4">
+              <div class="social text-right">
+                  <a href="https://twitter.com/" target="_blank">
+                      <i class="fab fa-twitter"></i>
+                  </a>
+                  <a href="https://www.facebook.com/" target="_blank">
+                      <i class="fab fa-facebook"></i>
+                  </a>
+                  <a href="https://www.linkedin.com/" target="_blank">
+                      <i class="fab fa-linkedin"></i>
+                  </a>
+                  <a href="https://www.instagram.com/" target="_blank">
+                      <i class="fab fa-instagram"></i>
+                  </a>
+                  <a href="https://www.pinterest.com/" target="_blank">
+                      <i class="fab fa-pinterest"></i>
+                  </a>
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:rgb(81, 79, 172)">
   <a class="navbar-brand" href="/">BookingClone</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -29,7 +62,7 @@
       </li>
       <li class="nav-item">
         <a [routerLink]="['/payments']" class="nav-link">
-          Plačanja
+          Plaćanja
         </a>
       </li>
       <li class="nav-item">
@@ -37,9 +70,15 @@
           Sobe
         </a>
     </ul>
+    <form class="form-inline my-2 my-lg-0">
+      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+    </form>
   </div>
 </nav>
 
 <div class="container mt-5">
   <router-outlet></router-outlet>
 </div>
+
+

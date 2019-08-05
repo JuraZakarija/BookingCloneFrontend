@@ -1,6 +1,6 @@
 <div>
-  <table class="table">
-      <thead>
+  <table class="table table-hover">
+    <thead class="thead-light">
           <tr>
               <th scope="col">#</th>
               <th scope="col">Ime</th>
@@ -9,6 +9,7 @@
               <th scope="col">Spol</th>
               <th scope="col">Kontakt</th>
               <th scope="col">Email</th>
+              <th scope="col">Is Active</th>
           </tr>
       </thead>
       <tbody>
@@ -16,11 +17,17 @@
               <th scope="row">{{i+1}}</th>
               <td>{{ guest.firstName }}</td>
               <td>{{ guest.lastName }}</td>
-              <td>{{ guest.birthdate }}</td>
+              <td>{{ guest.birthdate | date:'dd/MM/yyyy' }}</td>
               <td>{{ guest.gender }}</td>
               <td>{{ guest.phoneNumber }}</td>
               <td>{{ guest.email }}</td>
+              <td><input type="checkbox" checked></td>
           </tr>
       </tbody>
   </table>
+</div>
+<div class="btn-group" role="group" aria-label="Basic example">
+  <button type="button" class="btn btn-secondary">Add</button>
+  <button type="button" class="btn btn-secondary">Update</button>
+  <button type="button" class="btn btn-secondary">Delete</button>
 </div>
