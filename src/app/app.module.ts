@@ -13,9 +13,6 @@ import { RoomModule } from './room/room.module';
 
 import { HttpClientModule } from '@angular/common/http';
 
-// import { FontAwesomeModule } from '@fortawesome/fontawesome-svg-core';
-
-
 @NgModule({
   declarations: [
     AppComponent
@@ -30,8 +27,10 @@ import { HttpClientModule } from '@angular/common/http';
     PaymentModule,
     RoomModule,
     HttpClientModule,
-    // FontAwesomeModule,
   ],
+
+
+
   providers: [],
   bootstrap: [AppComponent]
 })

@@ -29,8 +29,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "node_modules/bootstrap/scss/bootstrap.scss",
-              "node_modules/font-awesome/scss/font-awesome.scss"
+              "node_modules/bootstrap/scss/bootstrap.scss"
             ],
             "scripts": []
           },
@@ -87,10 +86,12 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "assets/all.css"
             ],
             "scripts": []
           }
