@@ -16,4 +16,13 @@ private readonly HOTELS_URL = 'hotels';
 public getAll() {
   return this.http.get(environment.apiUrl + this.HOTELS_URL);
   }
+
+  public deleteOne(hotelId) {
+    return this.http.delete(environment.apiUrl + this.HOTELS_URL + '/' + hotelId);
+  }
+
+
+  public getOne(hotelId) {
+    return this.http.get(environment.apiUrl + this.HOTELS_URL + '/' + hotelId);
+  }
 }

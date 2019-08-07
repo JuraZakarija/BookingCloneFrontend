@@ -16,4 +16,12 @@ export class BookingService {
   public getAll() {
     return this.http.get(environment.apiUrl + this.BOOKINGS_URL);
     }
+
+    public deleteOne(bookingId) {
+      return this.http.delete(environment.apiUrl + this.BOOKINGS_URL + '/' + bookingId);
+    }
+
+    public getOne(bookingId) {
+      return this.http.get(environment.apiUrl + this.BOOKINGS_URL + '/' + bookingId);
+    }
   }

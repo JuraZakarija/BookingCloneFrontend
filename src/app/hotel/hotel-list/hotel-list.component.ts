@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HotelService } from '../hotel.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-hotel-list',
@@ -9,7 +11,9 @@ import { HotelService } from '../hotel.service';
 export class HotelListComponent implements OnInit {
 
   constructor(
-    private hotelService: HotelService
+    private hotelService: HotelService,
+    private toastr: ToastrService,
+    private router: Router
   ) { }
 
   public hotels = [];
@@ -18,5 +22,19 @@ export class HotelListComponent implements OnInit {
     this.hotelService.getAll().subscribe((response: any) => {
       this.hotels = response;
     });
+  }
+  getAllRooms() {
+    this.hotelService.getAll().subscribe((response: any) => {
+      this.hotels = response;
+    });
+  }
+
+
+  onAdd() {
+    this.router.navigate(['hotels/new']);
+  }
+
+  onEdit(hotelId) {
+    this.router.navigate(['hotels', hotelId]);
   }
 }

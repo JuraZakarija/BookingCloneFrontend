@@ -16,4 +16,14 @@ private readonly ROOMS_URL = 'rooms';
 public getAll() {
   return this.http.get(environment.apiUrl + this.ROOMS_URL);
   }
+
+
+  public deleteOne(roomId) {
+    return this.http.delete(environment.apiUrl + this.ROOMS_URL + '/' + roomId);
+  }
+
+
+  public getOne(roomId) {
+    return this.http.get(environment.apiUrl + this.ROOMS_URL + '/' + roomId);
+  }
 }

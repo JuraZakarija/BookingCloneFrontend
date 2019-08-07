@@ -16,4 +16,13 @@ private readonly PAYMENTS_URL = 'payments';
 public getAll() {
   return this.http.get(environment.apiUrl + this.PAYMENTS_URL);
   }
+
+  public deleteOne(paymentId) {
+    return this.http.delete(environment.apiUrl + this.PAYMENTS_URL + '/' + paymentId);
+  }
+
+
+  public getOne(paymentId) {
+    return this.http.get(environment.apiUrl + this.PAYMENTS_URL + '/' + paymentId);
+  }
 }

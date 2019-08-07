@@ -3,13 +3,17 @@ import { CommonModule } from '@angular/common';
 
 import { HotelRoutingModule } from './hotel-routing.module';
 import { HotelListComponent } from './hotel-list/hotel-list.component';
+import { HotelFormComponent } from './hotel-form/hotel-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
-  declarations: [HotelListComponent],
+  declarations: [HotelListComponent, HotelFormComponent],
   imports: [
     CommonModule,
-    HotelRoutingModule
+    HotelRoutingModule,
+    FormsModule,
+    ReactiveFormsModule,
   ]
 })
 export class HotelModule { }

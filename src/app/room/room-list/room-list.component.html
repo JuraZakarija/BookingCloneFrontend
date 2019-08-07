@@ -1,12 +1,16 @@
+<div align="right">
+  <button type="button" class="btn btn-secondary">Add</button>
+</div>
 <div>
   <table class="table table-hover">
-      <thead class="thead-light">
+      <thead class="thead-dark">
           <tr>
               <th scope="col">#</th>
               <th scope="col">Veličina</th>
               <th scope="col">Broj kreveta</th>
               <th scope="col">Tip</th>
               <th scope="col">Is Active</th>
+              <th scope="col" colspan="2">Actions</th>
           </tr>
       </thead>
       <tbody>
@@ -15,13 +19,13 @@
               <td>{{ room.size + ' m' }}<sup>2</sup></td>  <!--znam da je gej riješenje-->
               <td>{{ room.numberOfBeds }}</td>
               <td>{{ room.type }}</td>
-              <td><input type="checkbox" checked></td>
-          </tr>
+              <td><input type="checkbox"></td>
+              <td>
+                <button class="btn edit" (click)="onEdit(room.id)">
+                  <i class="fa fa-edit fa-lg fa-fw"></i></button>
+                </td>
+        </tr>
       </tbody>
   </table>
 </div>
-<div class="btn-group" role="group" aria-label="Basic example">
-  <button type="button" class="btn btn-secondary">Add</button>
-  <button type="button" class="btn btn-secondary">Update</button>
-  <button type="button" class="btn btn-secondary">Delete</button>
-</div>
+

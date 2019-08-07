@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GuestService } from '../guest.service';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-guest-list',
@@ -9,7 +11,9 @@ import { GuestService } from '../guest.service';
 export class GuestListComponent implements OnInit {
 
   constructor(
-    private guestService: GuestService
+    private guestService: GuestService,
+    private toastr: ToastrService,
+    private router: Router
   ) { }
 
   public guests = [];
@@ -18,5 +22,20 @@ export class GuestListComponent implements OnInit {
     this.guestService.getAll().subscribe((response: any) => {
       this.guests = response;
     });
+  }
+
+  getAllGuests() {
+    this.guestService.getAll().subscribe((response: any) => {
+      this.guests = response;
+    });
+  }
+
+
+  onAdd() {
+    this.router.navigate(['guests/new']);
+  }
+
+  onEdit(guestId) {
+    this.router.navigate(['guests', guestId]);
   }
 }
