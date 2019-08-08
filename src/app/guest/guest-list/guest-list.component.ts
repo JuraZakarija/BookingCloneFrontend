@@ -38,4 +38,12 @@ export class GuestListComponent implements OnInit {
   onEdit(guestId) {
     this.router.navigate(['guests', guestId]);
   }
+
+  onDelete(guestId) {
+    if (confirm('Da li ste sigurni?')) {
+      this.guestService.deleteOne(guestId).subscribe(result => {
+        this.getAllGuests();
+      });
+    }
+  }
 }

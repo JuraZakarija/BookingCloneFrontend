@@ -11,18 +11,40 @@ export class AgencyService {
     private http: HttpClient
   ) { }
 
-private readonly AGENCIES_URL = 'agencies';
+  private readonly AGENCIES_URL = 'agencies';
 
-public getAll() {
-  return this.http.get(environment.apiUrl + this.AGENCIES_URL);
+  private getRootUrl() {
+    return environment.apiUrl + this.AGENCIES_URL;
+  }
+
+  private formatUrl(agencyId) {
+    return this.getRootUrl() + '/' + agencyId;
+  }
+
+  public getAll() {
+    return this.http.get(this.getRootUrl());
+  }
+
+  public getOne(agencyId) {
+    return this.http.get(this.formatUrl(agencyId));
   }
 
   public deleteOne(agencyId) {
-    return this.http.delete(environment.apiUrl + this.AGENCIES_URL + '/' + agencyId);
+    return this.http.delete(this.formatUrl(agencyId));
   }
 
+  public addOne(agency) {
+    return this.http.post(this.getRootUrl(), agency);
+  }
 
-  public getOne(agencyId) {
-    return this.http.get(environment.apiUrl + this.AGENCIES_URL + '/' + agencyId);
+  public putOne(agencyId, agency) {
+    return this.http.put(this.formatUrl(agencyId), agency);
+  }
+
+  public submit(agency) {
+    if (!agency.id) {
+      return this.addOne(agency);
+    }
+    return this.putOne(agency.id, agency);
   }
 }

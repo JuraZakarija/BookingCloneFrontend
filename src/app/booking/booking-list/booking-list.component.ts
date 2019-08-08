@@ -38,4 +38,12 @@ export class BookingListComponent implements OnInit {
   onEdit(bookingId) {
     this.router.navigate(['bookings', bookingId]);
   }
+
+  onDelete(bookingId) {
+    if (confirm('Da li ste sigurni?')) {
+      this.bookingService.deleteOne(bookingId).subscribe(result => {
+        this.getAllBookings();
+      });
+    }
+  }
 }

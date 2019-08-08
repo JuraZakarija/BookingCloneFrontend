@@ -1,1 +1,27 @@
-<p>agency-form works!</p>
+
+<div>
+    <form (submit)="onSubmit()">
+    <input title="id" name="id" type="hidden" [(ngModel)]="agency.id" />
+  <div class="form-group">
+    <label for="name">Name</label>
+    <input required
+           [(ngModel)]="agency.name"
+           name="name"
+           type="text"
+           placeholder="Ime agencije"
+           class="form-control"
+           id="name">
+  </div>
+  <div class="form-group">
+    <label for="commission">Commission</label>
+    <input required
+           [(ngModel)]="agency.commission"
+           name="commission"
+           type="text"
+           placeholder="Provizija"
+           class="form-control"
+           id="commission">
+  </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>
