@@ -1,1 +1,27 @@
-<p>payment-form works!</p>
+<div>
+  <div [hidden]="errorMessage.length == 0">{{ errorMessage }}</div>
+    <form (submit)="onSubmit()" #Form="ngForm">
+    <input title="id" name="id" type="hidden" [(ngModel)]="payment.id" />
+  <div class="form-group">
+    <label for="price">Price</label>
+    <input required
+           [(ngModel)]="payment.price"
+           name="price"
+           type="number"
+           placeholder="Osnovica"
+           class="form-control"
+           id="price">
+  </div>
+  <div class="form-group">
+    <label for="margin">Margin</label>
+    <input required
+           [(ngModel)]="payment.margin"
+           name="margin"
+           type="number"
+           placeholder="Marža(%)"
+           class="form-control"
+           id="margin">
+  </div>
+    <button [disabled]="!Form.form.valid" type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

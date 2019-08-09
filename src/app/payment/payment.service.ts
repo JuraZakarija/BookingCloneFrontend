@@ -13,16 +13,38 @@ export class PaymentService {
 
 private readonly PAYMENTS_URL = 'payments';
 
+private getRootUrl() {
+  return environment.apiUrl + this.PAYMENTS_URL;
+}
+
+private formatUrl(paymentId: any) {
+  return this.getRootUrl() + '/' + paymentId;
+}
+
 public getAll() {
-  return this.http.get(environment.apiUrl + this.PAYMENTS_URL);
-  }
+  return this.http.get(this.getRootUrl());
+}
 
-  public deleteOne(paymentId) {
-    return this.http.delete(environment.apiUrl + this.PAYMENTS_URL + '/' + paymentId);
-  }
+public getOne(paymentId: any) {
+  return this.http.get(this.formatUrl(paymentId));
+}
 
+public deleteOne(paymentId: any) {
+  return this.http.delete(this.formatUrl(paymentId));
+}
 
-  public getOne(paymentId) {
-    return this.http.get(environment.apiUrl + this.PAYMENTS_URL + '/' + paymentId);
+public addOne(payment: any) {
+  return this.http.post(this.getRootUrl(), payment);
+}
+
+public putOne(paymentId: any, payment: any) {
+  return this.http.put(this.formatUrl(paymentId), payment);
+}
+
+public submit(payment: any) {
+  if (!payment.id) {
+    return this.addOne(payment);
   }
+  return this.putOne(payment.id, payment);
+}
 }
