@@ -30,12 +30,11 @@ export class AgencyListComponent implements OnInit {
     });
   }
 
-
   onAdd() {
     this.router.navigate(['agencies/new']);
   }
 
-  onEdit(agencyId) {
+  onEdit(agencyId: any) {
     this.router.navigate(['agencies', agencyId]);
   }
 }

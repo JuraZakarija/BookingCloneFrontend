@@ -1,6 +1,7 @@
 
 <div>
-    <form (submit)="onSubmit()">
+  <div [hidden]="errorMessage.length == 0">{{ errorMessage }}</div>
+    <form (submit)="onSubmit()" #Form="ngForm">
     <input title="id" name="id" type="hidden" [(ngModel)]="agency.id" />
   <div class="form-group">
     <label for="name">Name</label>
@@ -17,11 +18,11 @@
     <input required
            [(ngModel)]="agency.commission"
            name="commission"
-           type="text"
-           placeholder="Provizija"
+           type="number"
+           placeholder="Provizija(%)"
            class="form-control"
            id="commission">
   </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
+    <button [disabled]="!Form.form.valid" type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>

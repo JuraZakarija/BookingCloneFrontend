@@ -17,7 +17,7 @@ export class AgencyService {
     return environment.apiUrl + this.AGENCIES_URL;
   }
 
-  private formatUrl(agencyId) {
+  private formatUrl(agencyId: any) {
     return this.getRootUrl() + '/' + agencyId;
   }
 
@@ -25,23 +25,23 @@ export class AgencyService {
     return this.http.get(this.getRootUrl());
   }
 
-  public getOne(agencyId) {
+  public getOne(agencyId: any) {
     return this.http.get(this.formatUrl(agencyId));
   }
 
-  public deleteOne(agencyId) {
+  public deleteOne(agencyId: any) {
     return this.http.delete(this.formatUrl(agencyId));
   }
 
-  public addOne(agency) {
+  public addOne(agency: any) {
     return this.http.post(this.getRootUrl(), agency);
   }
 
-  public putOne(agencyId, agency) {
+  public putOne(agencyId: any, agency: any) {
     return this.http.put(this.formatUrl(agencyId), agency);
   }
 
-  public submit(agency) {
+  public submit(agency: any) {
     if (!agency.id) {
       return this.addOne(agency);
     }

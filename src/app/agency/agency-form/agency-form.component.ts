@@ -18,11 +18,12 @@ export class AgencyFormComponent implements OnInit {
   ) { }
 
   public agency: any = {};
-  // public errorMessage = "";
+  public errorMessage = '';
+
 
   ngOnInit() {
     this.route.params.subscribe(params => {
-      const agencyId = params['id'];
+      const agencyId = params.id;
       if (agencyId != null) {
         this.getAgency(agencyId);
       }
@@ -47,6 +48,8 @@ export class AgencyFormComponent implements OnInit {
       },
       (response: any) => {
         const firstError = response.error.errors;
+        const firstKey = Object.keys(firstError)[0];
+        this.errorMessage = firstError[firstKey][0];
       });
   }
 
