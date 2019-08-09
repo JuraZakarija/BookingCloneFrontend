@@ -30,13 +30,6 @@ export class AgencyFormComponent implements OnInit {
     });
   }
 
-  getGame(agencyId) {
-    this.agencyService.getOne(agencyId).subscribe(response => {
-      this.agency = response;
-      this.agency.id = agencyId;
-    });
-  }
-
   onSubmit() {
     delete this.agency.tags;
     this.agency.agencyId = 1;
@@ -53,7 +46,7 @@ export class AgencyFormComponent implements OnInit {
       });
   }
 
-  getAgency(agencyId) {
+  getAgency(agencyId: any) {
     this.agencyService.getOne(agencyId).subscribe(response => {
       this.agency = response;
       this.agency.id = agencyId;

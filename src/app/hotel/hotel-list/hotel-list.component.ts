@@ -34,7 +34,7 @@ export class HotelListComponent implements OnInit {
     this.router.navigate(['hotels/new']);
   }
 
-  onEdit(hotelId) {
+  onEdit(hotelId: any) {
     this.router.navigate(['hotels', hotelId]);
   }
 }

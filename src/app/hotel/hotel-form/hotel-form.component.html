@@ -1,6 +1,7 @@
 
 <div>
-    <form (submit)="onSubmit()">
+    <div [hidden]="errorMessage.length == 0">{{ errorMessage }}</div>
+    <form (submit)="onSubmit()" #Form="ngForm">
     <input title="id" name="id" type="hidden" [(ngModel)]="hotel.id" />
   <div class="form-group">
     <label for="name">Name</label>
@@ -23,24 +24,23 @@
            id="address">
   </div>
   <div class="form-group">
-      <label for="webaddress">WebAddress</label>
-      <input [(ngModel)]="hotel.webaddress"
-             name="webaddress"
+      <label for="webAddress">WebAddress</label>
+      <input [(ngModel)]="hotel.webAddress"
+             name="webAddress"
              type="text"
              placeholder="Web adresa hotela"
              class="form-control"
-             id="webaddress">
+             id="webAddress">
     </div>
     <div class="form-group">
-        <label for="phonenumber">PhoneNumber</label>
-        <input [(ngModel)]="hotel.phonenumber"
-               name="phonenumber"
-               type="text"
+        <label for="phoneNumber">PhoneNumber</label>
+        <input [(ngModel)]="hotel.phoneNumber"
+               name="phoneNumber"
+               type="number"
                placeholder="Adresa hotela"
                class="form-control"
-               id="commission">
+               id="phoneNumber">
       </div>
-
-    <button type="submit" class="btn btn-primary">Submit</button>
+      <button [disabled]="!Form.form.valid" type="submit" class="btn btn-primary">Submit</button>
   </form>
 </div>

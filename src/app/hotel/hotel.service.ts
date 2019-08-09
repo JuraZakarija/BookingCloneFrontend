@@ -13,16 +13,39 @@ export class HotelService {
 
 private readonly HOTELS_URL = 'hotels';
 
-public getAll() {
-  return this.http.get(environment.apiUrl + this.HOTELS_URL);
-  }
-
-  public deleteOne(hotelId) {
-    return this.http.delete(environment.apiUrl + this.HOTELS_URL + '/' + hotelId);
-  }
-
-
-  public getOne(hotelId) {
-    return this.http.get(environment.apiUrl + this.HOTELS_URL + '/' + hotelId);
-  }
+private getRootUrl() {
+  return environment.apiUrl + this.HOTELS_URL;
 }
+
+private formatUrl(hotelId: any) {
+  return this.getRootUrl() + '/' + hotelId;
+}
+
+public getAll() {
+  return this.http.get(this.getRootUrl());
+}
+
+public getOne(hotelId: any) {
+  return this.http.get(this.formatUrl(hotelId));
+}
+
+public deleteOne(hotelId: any) {
+  return this.http.delete(this.formatUrl(hotelId));
+}
+
+public addOne(hotel: any) {
+  return this.http.post(this.getRootUrl(), hotel);
+}
+
+public putOne(hotelId: any, hotel: any) {
+  return this.http.put(this.formatUrl(hotelId), hotel);
+}
+
+public submit(hotel: any) {
+  if (!hotel.id) {
+    return this.addOne(hotel);
+  }
+  return this.putOne(hotel.id, hotel);
+}
+}
+

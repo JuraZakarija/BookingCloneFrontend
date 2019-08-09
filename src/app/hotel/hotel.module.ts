@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HotelRoutingModule } from './hotel-routing.module';
 import { HotelListComponent } from './hotel-list/hotel-list.component';
 import { HotelFormComponent } from './hotel-form/hotel-form.component';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -13,7 +13,6 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     HotelRoutingModule,
     FormsModule,
-    ReactiveFormsModule,
   ]
 })
 export class HotelModule { }
