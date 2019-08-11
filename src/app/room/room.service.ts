@@ -42,7 +42,7 @@ public putOne(roomId: any, room: any) {
 }
 
 public submit(room: any) {
-  if (!room.id && room.hotelId) {
+  if (!room.id) {
     return this.addOne(room);
   }
   return this.putOne(room.id, room);

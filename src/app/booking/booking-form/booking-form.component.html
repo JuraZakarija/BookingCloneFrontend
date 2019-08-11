@@ -1,1 +1,28 @@
-<p>booking-form works!</p>
+
+<div>
+  <div [hidden]="errorMessage.length == 0">{{ errorMessage }}</div>
+    <form (submit)="onSubmit()" #Form="ngForm">
+    <input title="id" name="id" type="hidden" [(ngModel)]="booking.id" />
+  <div class="form-group">
+    <label for="checkIn">CheckIn</label>
+    <input required
+           [(ngModel)]="booking.checkIn"
+           name="checkIn"
+           type="date"
+           placeholder="Datum prijave"
+           class="form-control"
+           id="CheckIn">
+  </div>
+  <div class="form-group">
+    <label for="CheckOut">CheckOut</label>
+    <input required
+           [(ngModel)]="booking.checkOut"
+           name="checkOut"
+           type="date"
+           placeholder="Datum odjave"
+           class="form-control"
+           id="checkOut">
+  </div>
+    <button [disabled]="!Form.form.valid" type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

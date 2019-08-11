@@ -35,11 +35,11 @@ export class GuestListComponent implements OnInit {
     this.router.navigate(['guests/new']);
   }
 
-  onEdit(guestId) {
+  onEdit(guestId: any) {
     this.router.navigate(['guests', guestId]);
   }
 
-  onDelete(guestId) {
+  onDelete(guestId: any) {
     if (confirm('Da li ste sigurni?')) {
       this.guestService.deleteOne(guestId).subscribe(result => {
         this.getAllGuests();

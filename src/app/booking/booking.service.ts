@@ -13,15 +13,38 @@ export class BookingService {
 
   private readonly BOOKINGS_URL = 'bookings';
 
-  public getAll() {
-    return this.http.get(environment.apiUrl + this.BOOKINGS_URL);
-    }
-
-    public deleteOne(bookingId) {
-      return this.http.delete(environment.apiUrl + this.BOOKINGS_URL + '/' + bookingId);
-    }
-
-    public getOne(bookingId) {
-      return this.http.get(environment.apiUrl + this.BOOKINGS_URL + '/' + bookingId);
-    }
+  private getRootUrl() {
+    return environment.apiUrl + this.BOOKINGS_URL;
   }
+
+  private formatUrl(bookingId: any) {
+    return this.getRootUrl() + '/' + bookingId;
+  }
+
+  public getAll() {
+    return this.http.get(this.getRootUrl());
+  }
+
+  public getOne(bookingId: any) {
+    return this.http.get(this.formatUrl(bookingId));
+  }
+
+  public deleteOne(bookingId: any) {
+    return this.http.delete(this.formatUrl(bookingId));
+  }
+
+  public addOne(booking: any) {
+    return this.http.post(this.getRootUrl(), booking);
+  }
+
+  public putOne(bookingId: any, booking: any) {
+    return this.http.put(this.formatUrl(bookingId), booking);
+  }
+
+  public submit(booking: any) {
+    if (!booking.id) {
+      return this.addOne(booking);
+    }
+    return this.putOne(booking.id, booking);
+  }
+}
