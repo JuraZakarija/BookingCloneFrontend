@@ -13,17 +13,38 @@ export class RoomService {
 
 private readonly ROOMS_URL = 'rooms';
 
+private getRootUrl() {
+  return environment.apiUrl + this.ROOMS_URL;
+}
+
+private formatUrl(roomId: any) {
+  return this.getRootUrl() + '/' + roomId;
+}
+
 public getAll() {
-  return this.http.get(environment.apiUrl + this.ROOMS_URL);
+  return this.http.get(this.getRootUrl());
+}
+
+public getOne(roomId: any) {
+  return this.http.get(this.formatUrl(roomId));
+}
+
+public deleteOne(roomId: any) {
+  return this.http.delete(this.formatUrl(roomId));
+}
+
+public addOne(room: any) {
+  return this.http.post(this.getRootUrl(), room);
+}
+
+public putOne(roomId: any, room: any) {
+  return this.http.put(this.formatUrl(roomId), room);
+}
+
+public submit(room: any) {
+  if (!room.id && room.hotelId) {
+    return this.addOne(room);
   }
-
-
-  public deleteOne(roomId) {
-    return this.http.delete(environment.apiUrl + this.ROOMS_URL + '/' + roomId);
-  }
-
-
-  public getOne(roomId) {
-    return this.http.get(environment.apiUrl + this.ROOMS_URL + '/' + roomId);
-  }
+  return this.putOne(room.id, room);
+}
 }

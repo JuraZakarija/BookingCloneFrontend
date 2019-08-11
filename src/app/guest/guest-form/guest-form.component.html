@@ -1,1 +1,65 @@
-<p>guest-form works!</p>
+
+<div>
+  <div [hidden]="errorMessage.length == 0">{{ errorMessage }}</div>
+    <form (submit)="onSubmit()" #Form="ngForm">
+    <input title="id" name="id" type="hidden" [(ngModel)]="guest.id" />
+  <div class="form-group">
+    <label for="firstName">First Name</label>
+    <input required
+           [(ngModel)]="guest.firstName"
+           name="firstName"
+           type="text"
+           placeholder="Ime gosta"
+           class="form-control"
+           id="firstName">
+  </div>
+  <div class="form-group">
+    <label for="lastName">Last Name</label>
+    <input required
+           [(ngModel)]="guest.lastName"
+           name="lastName"
+           type="text"
+           placeholder="Prezime gosta"
+           class="form-control"
+           id="lastName">
+  </div>
+  <div class="form-group">
+    <label for="birthdate">Birthdate</label>
+    <input [(ngModel)]="guest.birthdate"
+           name="birthdate"
+           type="date"
+           placeholder="Datum rođenja"
+           class="form-control"
+           id="birthdate">
+  </div>
+  <div class="form-group">
+    <label for="gender">Gender</label>
+    <input [(ngModel)]="guest.gender"
+           name="gender"
+           type="text"
+           placeholder="Spol gosta"
+           class="form-control"
+           id="gender">
+  </div>
+  <div class="form-group">
+    <label for="phone">Phone</label>
+    <input [(ngModel)]="guest.phone"
+           name="phone"
+           type="number"
+           placeholder="Kontakt"
+           class="form-control"
+           id="phone">
+  </div>
+  <div class="form-group">
+    <label for="email">Email</label>
+    <input [(ngModel)]="guest.email"
+           name="email"
+           type="email"
+           placeholder="Email adresa"
+           class="form-control"
+           id="email">
+  </div>
+
+    <button [disabled]="!Form.form.valid" type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

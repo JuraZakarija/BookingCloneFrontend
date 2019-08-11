@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { GuestService } from '../guest.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-guest-form',
@@ -7,9 +10,47 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GuestFormComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private route: ActivatedRoute,
+    private guestService: GuestService,
+    private router: Router,
+    private toastr: ToastrService,
+  ) { }
+
+  public guest: any = {};
+  public errorMessage = '';
+
 
   ngOnInit() {
+    this.route.params.subscribe(params => {
+      const guestId = params.id;
+      if (guestId != null) {
+        this.getGuest(guestId);
+      }
+    });
   }
 
+  onSubmit() {
+    delete this.guest.tags;
+    this.guest.guestId = 1;
+
+    this.guestService.submit(this.guest).subscribe(
+      (response: any) => {
+        this.toastr.success('Radi više krv ti jebem');
+        this.router.navigate(['guests']);
+      },
+      (response: any) => {
+        const firstError = response.error.errors;
+        const firstKey = Object.keys(firstError)[0];
+        this.errorMessage = firstError[firstKey][0];
+      });
+  }
+
+  getGuest(guestId: any) {
+    this.guestService.getOne(guestId).subscribe(response => {
+      this.guest = response;
+      this.guest.id = guestId;
+    }
+    );
+  }
 }

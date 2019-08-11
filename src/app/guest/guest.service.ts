@@ -13,16 +13,38 @@ export class GuestService {
 
 private readonly GUESTS_URL = 'guests';
 
+private getRootUrl() {
+  return environment.apiUrl + this.GUESTS_URL;
+}
+
+private formatUrl(guestId: any) {
+  return this.getRootUrl() + '/' + guestId;
+}
+
 public getAll() {
-  return this.http.get(environment.apiUrl + this.GUESTS_URL);
-  }
+  return this.http.get(this.getRootUrl());
+}
 
-  public deleteOne(guestId) {
-    return this.http.delete(environment.apiUrl + this.GUESTS_URL + '/' + guestId);
-  }
+public getOne(guestId: any) {
+  return this.http.get(this.formatUrl(guestId));
+}
 
+public deleteOne(guestId: any) {
+  return this.http.delete(this.formatUrl(guestId));
+}
 
-  public getOne(guestId) {
-    return this.http.get(environment.apiUrl + this.GUESTS_URL + '/' + guestId);
+public addOne(guest: any) {
+  return this.http.post(this.getRootUrl(), guest);
+}
+
+public putOne(guestId: any, guest: any) {
+  return this.http.put(this.formatUrl(guestId), guest);
+}
+
+public submit(guest: any) {
+  if (!guest.id) {
+    return this.addOne(guest);
   }
+  return this.putOne(guest.id, guest);
+}
 }

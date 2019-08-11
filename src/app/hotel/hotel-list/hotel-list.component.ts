@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { HotelService } from '../hotel.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
+import { RoomFormComponent } from 'src/app/room/room-form/room-form.component';
+import { NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-hotel-list',
@@ -23,7 +25,7 @@ export class HotelListComponent implements OnInit {
       this.hotels = response;
     });
   }
-  getAllRooms() {
+  getAllHotels() {
     this.hotelService.getAll().subscribe((response: any) => {
       this.hotels = response;
     });
@@ -36,5 +38,9 @@ export class HotelListComponent implements OnInit {
 
   onEdit(hotelId: any) {
     this.router.navigate(['hotels', hotelId]);
+  }
+
+  addRoom(hotelId: any) {
+    this.router.navigate(['rooms/new']);
   }
 }

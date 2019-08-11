@@ -1,1 +1,47 @@
-<p>room-form works!</p>
+
+<div>
+  <div [hidden]="errorMessage.length == 0">{{ errorMessage }}</div>
+  <form (submit)="onSubmit()" #Form="ngForm">
+  <input title="id" name="id" type="hidden" [(ngModel)]="room.id" />
+  <input title="hotelId" name="hotelId" [(ngModel)]="room.hotelId">
+<div class="form-group">
+  <label for="room">Room</label>
+  <input required
+         [(ngModel)]="room.size"
+         name="size"
+         type="number"
+         placeholder="Veličina sobe"
+         class="form-control"
+         id="size">
+</div>
+<div class="form-group">
+  <label for="numberOfBeds">NumberOfBeds</label>
+  <input required
+         [(ngModel)]="room.numberOfBeds"
+         name="numberOfBeds"
+         type="number"
+         placeholder="Broj Kreveta"
+         class="form-control"
+         id="numberOfBeds">
+</div>
+<div class="form-group">
+    <label for="type">Type</label>
+    <input [(ngModel)]="room.type"
+           name="type"
+           type="text"
+           placeholder="Tip sobe"
+           class="form-control"
+           id="type">
+  </div>
+  <div class="form-group">
+      <label for="pricePerNight">PricePerNight</label>
+      <input [(ngModel)]="room.pricePerNight"
+             name="pricePerNight"
+             type="number"
+             placeholder="Cijena noćenja"
+             class="form-control"
+             id="pricePerNight">
+    </div>
+    <button [disabled]="!Form.form.valid" type="submit" class="btn btn-primary">Submit</button>
+</form>
+</div>

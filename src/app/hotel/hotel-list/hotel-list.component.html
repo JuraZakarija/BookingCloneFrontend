@@ -1,5 +1,5 @@
 <div align="right">
-  <button class="btn btn-secondary" (click)="onAdd()">Add</button>
+  <button class="btn btn-secondary" (click)="onAdd()">Add hotel</button>
 </div>
 <div>
   <table class="table table-hover">
@@ -25,7 +25,11 @@
               <td>
                 <button class="btn edit" (click)="onEdit(hotel.id)">
                   <i class="fa fa-edit fa-lg fa-fw"></i></button>
-                </td>
+              </td>
+              <td>
+                <button class="btn edit" (click)="addRoom(hotel.id)">
+                  <i class="fa fa-plus fa-lg fa-fw"></i></button>
+              </td>
           </tr>
       </tbody>
   </table>

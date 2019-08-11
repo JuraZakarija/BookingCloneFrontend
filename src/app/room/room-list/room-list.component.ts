@@ -35,7 +35,7 @@ export class RoomListComponent implements OnInit {
     this.router.navigate(['rooms/new']);
   }
 
-  onEdit(roomId) {
+  onEdit(roomId: any) {
     this.router.navigate(['rooms', roomId]);
   }
 }
