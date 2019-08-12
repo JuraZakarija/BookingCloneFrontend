@@ -33,8 +33,8 @@
   </div>
 </section>
 
-<nav class="navbar navbar-expand-lg navbar-dark" style="background-color:rgb(49, 119, 160)">
-  <a class="navbar-brand" href="/">BookingClone</a>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a [routerLink]="['/home']" class="nav-link">Booking Clone</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
     aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
@@ -79,8 +79,15 @@
   </div>
 </nav>
 
-<div class="container mt-5">
-  <router-outlet></router-outlet>
-</div>
+
+  <div class="container mt-5">
+    <router-outlet>
+    </router-outlet>
+  </div>
 
 
+<!-- Footer -->
+<footer id="footer" class="py-4 bg-dark text-white text-center">
+    Copyright &copy;
+    <span class="year"></span> Booking clone
+</footer>

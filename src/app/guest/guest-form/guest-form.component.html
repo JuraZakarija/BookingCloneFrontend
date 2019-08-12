@@ -3,7 +3,7 @@
   <div [hidden]="errorMessage.length == 0">{{ errorMessage }}</div>
     <form (submit)="onSubmit()" #Form="ngForm">
     <input title="id" name="id" type="hidden" [(ngModel)]="guest.id" />
-  <div class="form-group">
+  <div class="form-group col-sm-4">
     <label for="firstName">First Name</label>
     <input required
            [(ngModel)]="guest.firstName"
@@ -13,7 +13,7 @@
            class="form-control"
            id="firstName">
   </div>
-  <div class="form-group">
+  <div class="form-group col-sm-4">
     <label for="lastName">Last Name</label>
     <input required
            [(ngModel)]="guest.lastName"
@@ -23,7 +23,7 @@
            class="form-control"
            id="lastName">
   </div>
-  <div class="form-group">
+  <div class="form-group col-sm-4">
     <label for="birthdate">Birthdate</label>
     <input [(ngModel)]="guest.birthdate"
            name="birthdate"
@@ -32,7 +32,7 @@
            class="form-control"
            id="birthdate">
   </div>
-  <div class="form-group">
+  <div class="form-group col-sm-4">
     <label for="gender">Gender</label>
     <input [(ngModel)]="guest.gender"
            name="gender"
@@ -41,7 +41,7 @@
            class="form-control"
            id="gender">
   </div>
-  <div class="form-group">
+  <div class="form-group col-sm-4">
     <label for="phone">Phone</label>
     <input [(ngModel)]="guest.phone"
            name="phone"
@@ -50,7 +50,7 @@
            class="form-control"
            id="phone">
   </div>
-  <div class="form-group">
+  <div class="form-group col-sm-4">
     <label for="email">Email</label>
     <input [(ngModel)]="guest.email"
            name="email"

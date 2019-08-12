@@ -3,6 +3,9 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BookingService } from '../booking.service';
 import { ToastrService } from 'ngx-toastr';
 
+import { HotelService } from 'src/app/hotel/hotel.service';
+
+
 @Component({
   selector: 'app-booking-form',
   templateUrl: './booking-form.component.html',
@@ -15,15 +18,20 @@ export class BookingFormComponent implements OnInit {
     private bookingService: BookingService,
     private router: Router,
     private toastr: ToastrService,
+    private hotelService: HotelService,
+
   ) { }
 
   public booking: any = {};
   public errorMessage = '';
+  public hotels: any = [];
+  public selectedHotelId: any = {};
 
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       const bookingId = params.id;
+      this.getHotels();
       if (bookingId != null) {
         this.getBooking(bookingId);
       }
@@ -50,7 +58,12 @@ export class BookingFormComponent implements OnInit {
     this.bookingService.getOne(bookingId).subscribe(response => {
       this.booking = response;
       this.booking.id = bookingId;
-    }
-    );
+      this.selectedHotelId = this.booking.hotelId;
+    });
+  }
+  getHotels() {
+    this.hotelService.getAll().subscribe(response => {
+      this.hotels = response;
+    });
   }
 }

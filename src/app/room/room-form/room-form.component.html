@@ -3,16 +3,14 @@
   <div [hidden]="errorMessage.length == 0">{{ errorMessage }}</div>
   <form (submit)="onSubmit()" #Form="ngForm">
   <input title="id" name="id" type="hidden" [(ngModel)]="room.id" />
-  <!-- <input title="hotelId" name="hotelId" [(ngModel)]="room.hotelId" readonly> -->
-
     <label for="hotelId">Izaberite hotel</label>
-    <select class="form-control" name="hotelId" [(ngModel)]="room.hotelId">
+    <select class="form-control col-sm-4" name="hotelId" [(ngModel)]="room.hotelId">
       <option *ngFor="let hotel of hotels" [value]="hotel.id">
         {{hotel.name}}
       </option>
     </select>
 
-<div class="form-group">
+<div class="form-group col-sm-4">
   <label for="room">Room</label>
   <input required
          [(ngModel)]="room.size"
@@ -22,7 +20,7 @@
          class="form-control"
          id="size">
 </div>
-<div class="form-group">
+<div class="form-group col-sm-4">
   <label for="numberOfBeds">NumberOfBeds</label>
   <input required
          [(ngModel)]="room.numberOfBeds"
@@ -32,7 +30,7 @@
          class="form-control"
          id="numberOfBeds">
 </div>
-<div class="form-group">
+<div class="form-group col-sm-4">
     <label for="type">Type</label>
     <input [(ngModel)]="room.type"
            name="type"
@@ -41,7 +39,7 @@
            class="form-control"
            id="type">
   </div>
-  <div class="form-group">
+  <div class="form-group col-sm-4">
       <label for="pricePerNight">PricePerNight</label>
       <input [(ngModel)]="room.pricePerNight"
              name="pricePerNight"
