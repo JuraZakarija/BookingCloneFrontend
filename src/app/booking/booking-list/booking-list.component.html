@@ -17,7 +17,12 @@
               <th scope="row">{{i+1}}</th>
               <td>{{ booking.checkIn | date:'dd/MM/yyyy' }}</td>
               <td>{{ booking.checkOut | date:'dd/MM/yyyy' }}</td>
-              <td><input type="checkbox"></td>
+              <td>
+                  <div class="custom-control custom-switch">
+                      <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                      <label class="custom-control-label" for="customSwitch1"></label>
+                  </div>
+              </td>
               <td>
                 <button class="btn edit" (click)="onEdit(booking.id)">
                   <i class="fa fa-edit fa-lg fa-fw"></i></button>

@@ -25,6 +25,10 @@ public getAll() {
   return this.http.get(this.getRootUrl());
 }
 
+public getByHotel(hotelId) {
+  return this.http.get(this.getRootUrl() + '?hotelId=' + hotelId);
+}
+
 public getOne(roomId: any) {
   return this.http.get(this.formatUrl(roomId));
 }

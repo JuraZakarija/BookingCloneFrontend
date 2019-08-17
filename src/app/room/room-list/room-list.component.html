@@ -7,6 +7,7 @@
           <tr>
               <th scope="col">#</th>
               <th scope="col">Veličina</th>
+              <th scope="col">Broj sobe</th>
               <th scope="col">Broj kreveta</th>
               <th scope="col">Tip</th>
               <th scope="col">Cijena noćenja</th>
@@ -17,11 +18,17 @@
       <tbody>
           <tr *ngFor="let room of rooms; let i = index">
               <th scope="row">{{i+1}}</th>
-              <td>{{ room.size + ' m' }}<sup>2</sup></td>  <!--znam da je gej riješenje-->
+              <td>{{ room.size + ' m' }}<sup>2</sup></td>
+              <td>{{ room.roomNumber }}</td>  <!--znam da je gej riješenje-->
               <td>{{ room.numberOfBeds }}</td>
               <td>{{ room.type }}</td>
               <td>{{ room.pricePerNight + ' kn'}}</td>
-              <td><input type="checkbox"></td>
+              <td>
+                  <div class="custom-control custom-switch">
+                      <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                      <label class="custom-control-label" for="customSwitch1"></label>
+                  </div>
+              </td>
               <td>
                 <button class="btn edit" (click)="onEdit(room.id)">
                   <i class="fa fa-edit fa-lg fa-fw"></i></button>

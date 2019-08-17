@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RoomService } from '../room.service';
 import { ToastrService } from 'ngx-toastr';
+
 import { HotelService } from 'src/app/hotel/hotel.service';
 
 

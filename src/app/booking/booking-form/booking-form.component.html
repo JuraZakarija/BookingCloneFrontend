@@ -3,12 +3,43 @@
   <div [hidden]="errorMessage.length == 0">{{ errorMessage }}</div>
     <form (submit)="onSubmit()" #Form="ngForm">
     <input title="id" name="id" type="hidden" [(ngModel)]="booking.id" />
+
+    <label for="guestId">Izaberite gosta</label>
+    <select class="form-control col-sm-4" name="guestId" [(ngModel)]="booking.guestId">
+      <option *ngFor="let guest of guests" [value]="guest.id">
+        {{ guest.fullName }}
+      </option>
+    </select>
+
+    <label for="agencyId">Izaberite agenciju</label>
+    <select class="form-control col-sm-4" name="agencyId" [(ngModel)]="booking.agencyId">
+      <option *ngFor="let agency of agencies" [value]="agency.id">
+        {{agency.name}}
+      </option>
+    </select>
+
     <label for="hotelId">Izaberite hotel</label>
-    <select class="form-control col-sm-4" name="hotelId" [(ngModel)]="booking.hotelId">
+    <select
+      class="form-control col-sm-4"
+      name="hotelId"
+      (change)="onHotelChange(booking.hotelId)"
+      [(ngModel)]="booking.hotelId">
       <option *ngFor="let hotel of hotels" [value]="hotel.id">
         {{hotel.name}}
       </option>
     </select>
+
+
+    <label for="roomId">Izaberite sobu</label>
+    <select [disabled]="!booking.hotelId"
+      class="form-control col-sm-4"
+      name="roomId"
+      [(ngModel)]="booking.roomId">
+      <option *ngFor="let room of rooms">
+            {{room.roomNumber}}
+      </option>
+    </select>
+
 
   <div class="form-group col-sm-4">
     <label for="checkIn">CheckIn</label>
@@ -20,6 +51,7 @@
            class="form-control"
            id="CheckIn">
   </div>
+
   <div class="form-group col-sm-4">
     <label for="CheckOut">CheckOut</label>
     <input required
@@ -30,6 +62,14 @@
            class="form-control"
            id="checkOut">
   </div>
+
+  <div class="mb-5">
+      <label for="Price">Ukupna cijena</label>
+      <input type="text" name="country" value="Puno para" class="form-control col-sm-4" readonly>
+  </div>
+
     <button [disabled]="!Form.form.valid" type="submit" class="btn btn-primary">Submit</button>
+    <button [disabled]="!Form.form.valid" type="submit" class="btn btn-secondary ml-2">Provjeri dostupnost</button>
+
   </form>
 </div>

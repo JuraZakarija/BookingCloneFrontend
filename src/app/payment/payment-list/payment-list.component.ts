@@ -3,6 +3,9 @@ import { PaymentService } from '../payment.service';
 import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
+import { AgencyService } from 'src/app/agency/agency.service';
+import { GuestService } from 'src/app/guest/guest.service';
+
 @Component({
   selector: 'app-payment-list',
   templateUrl: './payment-list.component.html',
@@ -13,14 +16,20 @@ export class PaymentListComponent implements OnInit {
   constructor(
     private paymentService: PaymentService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private agencyService: AgencyService,
+    private guestService: GuestService,
   ) { }
 
   public payments = [];
+  public guests: any  = {};
+  public agencies: any = {};
 
   ngOnInit() {
     this.paymentService.getAll().subscribe((response: any) => {
       this.payments = response;
+      this.getAgencies();
+      this.getGuests();
     });
   }
 
@@ -35,8 +44,20 @@ export class PaymentListComponent implements OnInit {
     this.router.navigate(['payments/new']);
   }
 
-  onEdit(paymentId) {
+  onEdit(paymentId: any) {
     this.router.navigate(['payments', paymentId]);
+  }
+
+  getAgencies() {
+    this.agencyService.getAll().subscribe(response => {
+      this.agencies = response;
+    });
+  }
+
+  getGuests() {
+    this.guestService.getAll().subscribe(response => {
+      this.guests = response;
+    });
   }
 }
 

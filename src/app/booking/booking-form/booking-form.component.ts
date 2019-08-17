@@ -4,6 +4,9 @@ import { BookingService } from '../booking.service';
 import { ToastrService } from 'ngx-toastr';
 
 import { HotelService } from 'src/app/hotel/hotel.service';
+import { AgencyService } from 'src/app/agency/agency.service';
+import { GuestService } from 'src/app/guest/guest.service';
+import { RoomService } from 'src/app/room/room.service';
 
 
 @Component({
@@ -19,19 +22,35 @@ export class BookingFormComponent implements OnInit {
     private router: Router,
     private toastr: ToastrService,
     private hotelService: HotelService,
+    private agencyService: AgencyService,
+    private guestService: GuestService,
+    private roomService: RoomService,
 
   ) { }
 
   public booking: any = {};
   public errorMessage = '';
+
   public hotels: any = [];
   public selectedHotelId: any = {};
+
+  public agencies: any = [];
+  public selectedAgencyId: any = {};
+
+  public guests: any = [];
+  public selectedGuestId: any = {};
+
+  public rooms: any = [];
+  public selectedRoomId: any = {};
 
 
   ngOnInit() {
     this.route.params.subscribe(params => {
       const bookingId = params.id;
       this.getHotels();
+      this.getAgencies();
+      this.getGuests();
+      this.getRooms();
       if (bookingId != null) {
         this.getBooking(bookingId);
       }
@@ -58,12 +77,43 @@ export class BookingFormComponent implements OnInit {
     this.bookingService.getOne(bookingId).subscribe(response => {
       this.booking = response;
       this.booking.id = bookingId;
+      this.selectedGuestId = this.booking.guestId;
+      this.selectedAgencyId = this.booking.agencyId;
       this.selectedHotelId = this.booking.hotelId;
+      this.selectedRoomId = this.booking.roomId;
     });
   }
+
+  onHotelChange(newHotelId) {
+    this
+      .roomService
+      .getByHotel(newHotelId)
+      .subscribe(response => {
+        this.rooms = response;
+      });
+  }
+
   getHotels() {
     this.hotelService.getAll().subscribe(response => {
       this.hotels = response;
+    });
+  }
+
+  getAgencies() {
+    this.agencyService.getAll().subscribe(response => {
+      this.agencies = response;
+    });
+  }
+
+  getGuests() {
+    this.guestService.getAll().subscribe(response => {
+      this.guests = response;
+    });
+  }
+
+  getRooms() {
+    this.roomService.getAll().subscribe(response => {
+      this.rooms = response;
     });
   }
 }

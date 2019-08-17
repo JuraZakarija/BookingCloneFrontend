@@ -21,7 +21,12 @@
               <td>{{ hotel.address }}</td>
               <td>{{ hotel.webAddress }}</td>
               <td>{{ hotel.phoneNumber }}</td>
-              <td><input type="checkbox"></td>
+              <td>
+                  <div class="custom-control custom-switch">
+                      <input type="checkbox" class="custom-control-input" id="customSwitch1">
+                      <label class="custom-control-label" for="customSwitch1"></label>
+                  </div>
+              </td>
               <td>
                 <button class="btn edit" (click)="onEdit(hotel.id)">
                   <i class="fa fa-edit fa-lg fa-fw"></i></button>
