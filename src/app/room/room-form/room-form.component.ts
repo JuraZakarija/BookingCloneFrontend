@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { RoomService } from '../room.service';
 import { ToastrService } from 'ngx-toastr';
+import { Location } from '@angular/common';
+
 
 import { HotelService } from 'src/app/hotel/hotel.service';
 
@@ -19,6 +21,7 @@ export class RoomFormComponent implements OnInit {
     private hotelService: HotelService,
     private router: Router,
     private toastr: ToastrService,
+    private location: Location,
   ) { }
 
 
@@ -44,7 +47,7 @@ export class RoomFormComponent implements OnInit {
 
     this.roomService.submit(this.room).subscribe(
       (response: any) => {
-        this.toastr.success('Radi više krv ti jebem');
+        this.toastr.success('Success!');
         this.router.navigate(['rooms']);
       },
       (response: any) => {
@@ -52,6 +55,10 @@ export class RoomFormComponent implements OnInit {
         const firstKey = Object.keys(firstError)[0];
         this.errorMessage = firstError[firstKey][0];
       });
+  }
+
+  goBack() {
+    this.location.back();
   }
 
   getRoom(roomId: any) {

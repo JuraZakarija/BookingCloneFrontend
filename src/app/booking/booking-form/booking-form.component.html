@@ -67,9 +67,11 @@
       <label for="Price">Ukupna cijena</label>
       <input type="text" name="country" value="Puno para" class="form-control col-sm-4" readonly>
   </div>
+    <button (click)="goBack()" class="btn btn-outline-primary float-left">Odustani</button>
 
-    <button [disabled]="!Form.form.valid" type="submit" class="btn btn-primary">Submit</button>
-    <button [disabled]="!Form.form.valid" type="submit" class="btn btn-secondary ml-2">Provjeri dostupnost</button>
+
+    <button [disabled]="!Form.form.valid" type="submit" class="btn btn-secondary ml-2 float-right">Provjeri dostupnost</button>
+    <button [disabled]="!Form.form.valid" type="submit" class="btn btn-primary float-right">Submit</button>
 
   </form>
 </div>

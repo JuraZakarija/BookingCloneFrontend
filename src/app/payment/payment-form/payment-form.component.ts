@@ -36,7 +36,7 @@ export class PaymentFormComponent implements OnInit {
 
     this.paymentService.submit(this.payment).subscribe(
       (response: any) => {
-        this.toastr.success('Radi više krv ti jebem');
+        this.toastr.success('Success!');
         this.router.navigate(['payments']);
       },
       (response: any) => {

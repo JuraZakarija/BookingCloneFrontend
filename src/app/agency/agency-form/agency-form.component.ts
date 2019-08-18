@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AgencyService } from '../agency.service';
 import { ToastrService } from 'ngx-toastr';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-agency-form',
@@ -15,6 +16,7 @@ export class AgencyFormComponent implements OnInit {
     private agencyService: AgencyService,
     private router: Router,
     private toastr: ToastrService,
+    private location: Location,
   ) { }
 
   public agency: any = {};
@@ -36,7 +38,7 @@ export class AgencyFormComponent implements OnInit {
 
     this.agencyService.submit(this.agency).subscribe(
       (response: any) => {
-        this.toastr.success('Radi više krv ti jebem');
+        this.toastr.success('Success!');
         this.router.navigate(['agencies']);
       },
       (response: any) => {
@@ -44,6 +46,10 @@ export class AgencyFormComponent implements OnInit {
         const firstKey = Object.keys(firstError)[0];
         this.errorMessage = firstError[firstKey][0];
       });
+  }
+
+  goBack() {
+    this.location.back();
   }
 
   getAgency(agencyId: any) {

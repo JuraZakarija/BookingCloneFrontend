@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { GuestService } from '../guest.service';
 import { ToastrService } from 'ngx-toastr';
+import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-guest-form',
@@ -15,6 +17,7 @@ export class GuestFormComponent implements OnInit {
     private guestService: GuestService,
     private router: Router,
     private toastr: ToastrService,
+    private location: Location,
   ) { }
 
   public guest: any = {};
@@ -36,7 +39,7 @@ export class GuestFormComponent implements OnInit {
 
     this.guestService.submit(this.guest).subscribe(
       (response: any) => {
-        this.toastr.success('Radi više krv ti jebem');
+        this.toastr.success('Success!');
         this.router.navigate(['guests']);
       },
       (response: any) => {
@@ -44,6 +47,10 @@ export class GuestFormComponent implements OnInit {
         const firstKey = Object.keys(firstError)[0];
         this.errorMessage = firstError[firstKey][0];
       });
+  }
+
+  goBack() {
+    this.location.back();
   }
 
   getGuest(guestId: any) {

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BookingService } from '../booking.service';
 import { ToastrService } from 'ngx-toastr';
+import { Location } from '@angular/common';
+
 
 import { HotelService } from 'src/app/hotel/hotel.service';
 import { AgencyService } from 'src/app/agency/agency.service';
@@ -25,6 +27,8 @@ export class BookingFormComponent implements OnInit {
     private agencyService: AgencyService,
     private guestService: GuestService,
     private roomService: RoomService,
+    private location: Location,
+
 
   ) { }
 
@@ -63,7 +67,7 @@ export class BookingFormComponent implements OnInit {
 
     this.bookingService.submit(this.booking).subscribe(
       (response: any) => {
-        this.toastr.success('Radi više krv ti jebem');
+        this.toastr.success('Success!');
         this.router.navigate(['bookings']);
       },
       (response: any) => {
@@ -82,6 +86,10 @@ export class BookingFormComponent implements OnInit {
       this.selectedHotelId = this.booking.hotelId;
       this.selectedRoomId = this.booking.roomId;
     });
+  }
+
+  goBack() {
+    this.location.back();
   }
 
   onHotelChange(newHotelId) {
