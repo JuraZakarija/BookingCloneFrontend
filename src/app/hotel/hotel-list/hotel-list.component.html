@@ -1,4 +1,4 @@
-<div align="right">
+<div align="right" class="mb-3">
   <button class="btn btn-secondary" (click)="onAdd()">Add hotel</button>
 </div>
 <div>
@@ -31,11 +31,44 @@
                 <button class="btn edit" (click)="onEdit(hotel.id)">
                   <i class="fa fa-edit fa-lg fa-fw"></i></button>
               </td>
-              <!-- <td>
-                <button class="btn edit" (click)="addRoom(hotel.id)">
-                  <i class="fa fa-plus fa-lg fa-fw"></i></button>
-              </td> -->
           </tr>
       </tbody>
   </table>
-</div>
+
+  <div class="row">
+
+      <div class="col">
+        <nav aria-label="Page navigation example">
+            <ul class="pagination">
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Previous">
+                  <span aria-hidden="true">&laquo;</span>
+                  <span class="sr-only">Previous</span>
+                </a>
+              </li>
+              <li class="page-item"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item">
+                <a class="page-link" href="#" aria-label="Next">
+                  <span aria-hidden="true">&raquo;</span>
+                  <span class="sr-only">Next</span>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+          <div class="dropdown float-right">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                25
+              </button>
+              <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <a class="dropdown-item">25</a>
+                <a class="dropdown-item">50</a>
+                <a class="dropdown-item">100</a>
+              </div>
+            </div>
+
+      </div>
+    </div>
