@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RoomService } from '../room.service';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-room-list',
@@ -13,19 +13,25 @@ export class RoomListComponent implements OnInit {
   constructor(
     private roomService: RoomService,
     private toastr: ToastrService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
+
   ) { }
 
   public rooms = [];
 
-  ngOnInit() {
-    this.roomService.getAll().subscribe((response: any) => {
-      this.rooms = response;
-    });
-  }
+  public hotelId = null;
 
-  getAllRooms() {
-    this.roomService.getAll().subscribe((response: any) => {
+  ngOnInit() {
+    this.route.queryParams
+    .subscribe(params => {
+      this.hotelId = params.hotelId;
+      this.getAllRooms({ hotelId: params.hotelId });
+    });
+}
+
+  getAllRooms(raw: any) {
+    this.roomService.getAll(raw).subscribe((response: any) => {
       this.rooms = response;
     });
   }

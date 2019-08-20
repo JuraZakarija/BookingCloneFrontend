@@ -21,11 +21,15 @@ private formatUrl(roomId: any) {
   return this.getRootUrl() + '/' + roomId;
 }
 
-public getAll() {
-  return this.http.get(this.getRootUrl());
+public getAll(raw: any) {
+  Object.keys(raw).forEach((key) => (raw[key] == null) && delete raw[key]);
+
+  return this.http.get(this.getRootUrl(), {
+    params: raw
+  });
 }
 
-public getByHotel(hotelId) {
+public getByHotel(hotelId: any) {
   return this.http.get(this.getRootUrl() + '?hotelId=' + hotelId);
 }
 

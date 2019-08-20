@@ -15,8 +15,8 @@
       <tbody>
           <tr *ngFor="let booking of bookings; let i = index">
               <th scope="row">{{i+1}}</th>
-              <td>{{ booking.checkIn | date:'dd/MM/yyyy' }}</td>
-              <td>{{ booking.checkOut | date:'dd/MM/yyyy' }}</td>
+              <td>{{ booking.checkIn | date:'dd.MM.yyyy' }}</td>
+              <td>{{ booking.checkOut | date:'dd.MM.yyyy' }}</td>
               <td>
                   <div class="custom-control custom-switch">
                       <input type="checkbox" class="custom-control-input" id="customSwitch1">

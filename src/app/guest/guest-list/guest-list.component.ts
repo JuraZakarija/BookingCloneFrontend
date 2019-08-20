@@ -30,6 +30,11 @@ export class GuestListComponent implements OnInit {
     });
   }
 
+  onBookingCountClick(guestId: any) {
+    this.router.navigate(['bookings'], { queryParams: {guestId}
+    });
+  }
+
 
   onAdd() {
     this.router.navigate(['guests/new']);

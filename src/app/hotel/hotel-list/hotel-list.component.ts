@@ -24,6 +24,13 @@ export class HotelListComponent implements OnInit {
       this.hotels = response;
     });
   }
+
+  onRoomCountClick(hotelId: any) {
+    this.router.navigate(['rooms'], { queryParams: {hotelId}
+    });
+  }
+
+
   getAllHotels() {
     this.hotelService.getAll().subscribe((response: any) => {
       this.hotels = response;

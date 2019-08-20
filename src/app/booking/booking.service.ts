@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -21,8 +21,13 @@ export class BookingService {
     return this.getRootUrl() + '/' + bookingId;
   }
 
-  public getAll() {
-    return this.http.get(this.getRootUrl());
+  public getAll(raw: any) {
+
+    Object.keys(raw).forEach((key) => (raw[key] == null) && delete raw[key]);
+
+    return this.http.get(this.getRootUrl(), {
+      params: raw
+    });
   }
 
   public getOne(bookingId: any) {

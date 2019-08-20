@@ -20,7 +20,7 @@
           <tr *ngFor="let guest of guests; let i = index">
               <th scope="row">{{i+1}}</th>
               <td>{{ guest.fullName }}</td>
-              <td>{{ guest.birthdate | date:'dd/MM/yyyy' }}</td>
+              <td>{{ guest.birthdate | date:'dd.MM.yyyy' }}</td>
               <td>{{ guest.gender }}</td>
               <td>{{ guest.phoneNumber }}</td>
               <td>{{ guest.email }}</td>

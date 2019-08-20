@@ -10,6 +10,7 @@
               <th scope="col">Adresa</th>
               <th scope="col">Web</th>
               <th scope="col">Kontakt</th>
+              <th scope="col">Broj soba</th>
               <th scope="col">Is Active</th>
               <th scope="col">Edit</th>
           </tr>
@@ -21,6 +22,9 @@
               <td>{{ hotel.address }}</td>
               <td>{{ hotel.webAddress }}</td>
               <td>{{ hotel.phoneNumber }}</td>
+              <td>
+                  <a (click)="onRoomCountClick(hotel.id)">{{ hotel.roomCount }}</a>
+              </td>
               <td>
                   <div class="custom-control custom-switch">
                       <input type="checkbox" class="custom-control-input" id="customSwitch1">
