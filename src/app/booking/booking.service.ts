@@ -21,13 +21,16 @@ export class BookingService {
     return this.getRootUrl() + '/' + bookingId;
   }
 
-  public getAll(raw: any) {
-
+  public getAll(raw?: any) {
     Object.keys(raw).forEach((key) => (raw[key] == null) && delete raw[key]);
 
     return this.http.get(this.getRootUrl(), {
       params: raw
     });
+  }
+
+  public getByGuest(guestId: any) {
+    return this.http.get(this.getRootUrl() + '?guestId=' + guestId);
   }
 
   public getOne(bookingId: any) {

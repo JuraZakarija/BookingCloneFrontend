@@ -3,11 +3,11 @@ import { ToastrService } from 'ngx-toastr';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+  selector: 'app-login-form',
+  templateUrl: './login-form.component.html',
+  styleUrls: ['./login-form.component.scss']
 })
-export class HomeComponent implements OnInit {
+export class LoginFormComponent implements OnInit {
 
   constructor(
     private toastr: ToastrService,
@@ -15,10 +15,7 @@ export class HomeComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.router.navigate(['home']);
-  }
-
-  onLogin() {
     this.router.navigate(['login']);
   }
+
 }

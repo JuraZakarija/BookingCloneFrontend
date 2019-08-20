@@ -11,6 +11,7 @@ import { HotelModule } from './hotel/hotel.module';
 import { PaymentModule } from './payment/payment.module';
 import { RoomModule } from './room/room.module';
 import { HomepageModule} from './homepage/homepage.module';
+import { LoginModule } from './login/login.module';
 
 import { HttpClientModule } from '@angular/common/http';
 
@@ -30,6 +31,7 @@ import { ToastrModule } from 'ngx-toastr';
     PaymentModule,
     RoomModule,
     HomepageModule,
+    LoginModule,
     HttpClientModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot()

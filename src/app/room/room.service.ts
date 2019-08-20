@@ -21,7 +21,7 @@ private formatUrl(roomId: any) {
   return this.getRootUrl() + '/' + roomId;
 }
 
-public getAll(raw: any) {
+public getAll(raw?: any) {
   Object.keys(raw).forEach((key) => (raw[key] == null) && delete raw[key]);
 
   return this.http.get(this.getRootUrl(), {
