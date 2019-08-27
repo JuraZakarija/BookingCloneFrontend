@@ -10,8 +10,19 @@
       </option>
     </select>
 
+    <div class="form-group col-sm-4">
+      <label for="room">Room number</label>
+      <input required
+             [(ngModel)]="room.roomNumber"
+             name="roomNumber"
+             type="number"
+             placeholder="Broj sobe"
+             class="form-control"
+             id="roomNumber">
+    </div>
+
 <div class="form-group col-sm-4">
-  <label for="room">Room</label>
+  <label for="room">Room size</label>
   <input required
          [(ngModel)]="room.size"
          name="size"
@@ -20,6 +31,7 @@
          class="form-control"
          id="size">
 </div>
+
 <div class="form-group col-sm-4">
   <label for="numberOfBeds">NumberOfBeds</label>
   <input required

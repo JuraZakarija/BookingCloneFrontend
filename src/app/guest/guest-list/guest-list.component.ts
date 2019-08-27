@@ -37,11 +37,11 @@ export class GuestListComponent implements OnInit {
 
 
   onAdd() {
-    this.router.navigate(['guests/new']);
+    this.router.navigate(['users/new']);
   }
 
   onEdit(guestId: any) {
-    this.router.navigate(['guests', guestId]);
+    this.router.navigate(['users', guestId]);
   }
 
   onDelete(guestId: any) {

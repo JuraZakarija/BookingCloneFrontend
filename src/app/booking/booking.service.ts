@@ -45,9 +45,18 @@ export class BookingService {
     return this.http.post(this.getRootUrl(), booking);
   }
 
+  public onCheck(bookings: any) {
+    const params = new HttpParams()
+      .set('roomId', bookings.roomId)
+      .set('checkIn', bookings.checkIn)
+      .set('checkOut', bookings.checkOut);
+    return this.http.post(this.getRootUrl() + '/is_available', params);
+  }
+
   public putOne(bookingId: any, booking: any) {
     return this.http.put(this.formatUrl(bookingId), booking);
   }
+
 
   public submit(booking: any) {
     if (!booking.id) {

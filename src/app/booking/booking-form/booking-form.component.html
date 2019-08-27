@@ -5,14 +5,14 @@
     <input title="id" name="id" type="hidden" [(ngModel)]="booking.id" />
 
     <label for="guestId">Izaberite gosta</label>
-    <select class="form-control col-sm-4" name="guestId" [(ngModel)]="booking.guestId">
+    <select class="form-control col-sm-4" name="guestId" [(ngModel)]="booking.guestId" required>
       <option *ngFor="let guest of guests" [value]="guest.id">
         {{ guest.fullName }}
       </option>
     </select>
 
     <label for="agencyId">Izaberite agenciju</label>
-    <select class="form-control col-sm-4" name="agencyId" [(ngModel)]="booking.agencyId">
+    <select class="form-control col-sm-4" name="agencyId" [(ngModel)]="booking.agencyId" required>
       <option *ngFor="let agency of agencies" [value]="agency.id">
         {{agency.name}}
       </option>
@@ -20,6 +20,7 @@
 
     <label for="hotelId">Izaberite hotel</label>
     <select
+      required
       class="form-control col-sm-4"
       name="hotelId"
       (change)="onHotelChange(booking.hotelId)"
@@ -68,8 +69,16 @@
     <button (click)="goBack()" class="btn btn-outline-primary float-left">Odustani</button>
 
 
-    <button [disabled]="!Form.form.valid" type="submit" class="btn btn-secondary ml-2 float-right">Provjeri dostupnost</button>
-    <button [disabled]="!Form.form.valid" type="submit" class="btn btn-primary float-right">Submit</button>
+    <button [disabled]="!booking.checkIn && !booking.checkOut && !booking.roomId"
+            type="submit"
+            class="btn btn-primary ml-2 float-right"
+            (click)="check()">
+            Provjeri dostupnost</button>
+
+    <button [disabled]="!Form.form.valid && !isAvailable"
+            type="submit"
+            class="btn btn-primary float-right">
+            Submit</button>
 
   </form>
 </div>

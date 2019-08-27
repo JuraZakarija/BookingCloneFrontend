@@ -9,7 +9,7 @@ import { HotelService } from 'src/app/hotel/hotel.service';
 import { AgencyService } from 'src/app/agency/agency.service';
 import { GuestService } from 'src/app/guest/guest.service';
 import { RoomService } from 'src/app/room/room.service';
-import { NONE_TYPE } from '@angular/compiler/src/output/output_ast';
+
 
 
 @Component({
@@ -47,6 +47,11 @@ export class BookingFormComponent implements OnInit {
 
   public rooms: any = [];
   public selectedRoomId: any = {};
+
+  public isAvailable = false;
+  public roomId: any = {};
+  public checkIn: any = {};
+  public checkOut: any = {};
 
 
   ngOnInit() {
@@ -93,13 +98,23 @@ export class BookingFormComponent implements OnInit {
     this.location.back();
   }
 
-  onHotelChange(newHotelId) {
+  onHotelChange(newHotelId: any) {
     this
       .roomService
       .getByHotel(newHotelId)
       .subscribe(response => {
         this.rooms = response;
       });
+  }
+
+  check(bookings: any) {
+    this
+      .bookingService
+      .onCheck(bookings)
+      .subscribe((response: boolean) => {
+        this.isAvailable = response;
+      });
+
   }
 
   getHotels() {

@@ -11,7 +11,7 @@ export class GuestService {
     private http: HttpClient
   ) { }
 
-private readonly GUESTS_URL = 'guests';
+private readonly GUESTS_URL = 'users';
 
 private getRootUrl() {
   return environment.apiUrl + this.GUESTS_URL;

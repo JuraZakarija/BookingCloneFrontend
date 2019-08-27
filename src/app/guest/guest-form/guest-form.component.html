@@ -1,5 +1,5 @@
 
-<div>
+<div align="center">
   <div [hidden]="errorMessage.length == 0">{{ errorMessage }}</div>
     <form (submit)="onSubmit()" #Form="ngForm">
     <input title="id" name="id" type="hidden" [(ngModel)]="guest.id" />

@@ -5,9 +5,9 @@ import { GuestFormComponent } from './guest-form/guest-form.component';
 
 
 const routes: Routes = [
-  {path: 'guests', component: GuestListComponent},
-  {path: 'guests/new', component: GuestFormComponent },
-  {path: 'guests/:id', component: GuestFormComponent }
+  {path: 'users', component: GuestListComponent},
+  {path: 'users/new', component: GuestFormComponent },
+  {path: 'users/:id', component: GuestFormComponent }
 ];
 
 @NgModule({
