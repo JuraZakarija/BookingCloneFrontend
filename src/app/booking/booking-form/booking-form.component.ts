@@ -70,7 +70,7 @@ export class BookingFormComponent implements OnInit {
   onSubmit() {
     delete this.booking.tags;
     this.booking.bookingId = 1;
-
+    this.booking.userId = 1;
     this.bookingService.submit(this.booking).subscribe(
       (response: any) => {
         this.toastr.success('Success!');
@@ -107,14 +107,20 @@ export class BookingFormComponent implements OnInit {
       });
   }
 
-  check(bookings: any) {
+  check() {
     this
       .bookingService
-      .onCheck(bookings)
+      .onCheck(this.booking)
       .subscribe((response: boolean) => {
         this.isAvailable = response;
+        let message: string;
+        if (response) {
+          message  = 'Available';
+        } else {
+          message = 'Not available';
+        }
+        this.toastr.info(message);
       });
-
   }
 
   getHotels() {

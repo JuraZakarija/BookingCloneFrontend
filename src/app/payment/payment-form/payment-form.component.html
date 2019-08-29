@@ -2,16 +2,7 @@
   <div [hidden]="errorMessage.length == 0">{{ errorMessage }}</div>
     <form (submit)="onSubmit()" #Form="ngForm">
     <input title="id" name="id" type="hidden" [(ngModel)]="payment.id" />
-  <!-- <div class="form-group col-sm-4">
-    <label for="price">Price</label>
-    <input required
-           [(ngModel)]="payment.price"
-           name="price"
-           type="number"
-           placeholder="Osnovica"
-           class="form-control"
-           id="price">
-  </div> -->
+
   <div class="form-group col-sm-4">
     <label for="margin">Margin</label>
     <input required

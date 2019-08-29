@@ -40,7 +40,7 @@ export class GuestFormComponent implements OnInit {
     this.guestService.submit(this.guest).subscribe(
       (response: any) => {
         this.toastr.success('Success!');
-        this.router.navigate(['guests']);
+        this.router.navigate(['login']);
       },
       (response: any) => {
         const firstError = response.error.errors;

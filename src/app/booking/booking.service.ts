@@ -46,11 +46,7 @@ export class BookingService {
   }
 
   public onCheck(bookings: any) {
-    const params = new HttpParams()
-      .set('roomId', bookings.roomId)
-      .set('checkIn', bookings.checkIn)
-      .set('checkOut', bookings.checkOut);
-    return this.http.post(this.getRootUrl() + '/is_available', params);
+    return this.http.post(this.getRootUrl() + '/is_available', bookings);
   }
 
   public putOne(bookingId: any, booking: any) {

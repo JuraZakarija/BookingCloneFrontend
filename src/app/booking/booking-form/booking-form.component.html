@@ -1,7 +1,7 @@
 
-<div>
+<div align="center">
   <div [hidden]="errorMessage.length == 0">{{ errorMessage }}</div>
-    <form (submit)="onSubmit()" #Form="ngForm">
+    <form #Form="ngForm">
     <input title="id" name="id" type="hidden" [(ngModel)]="booking.id" />
 
     <label for="guestId">Izaberite gosta</label>
@@ -14,7 +14,7 @@
     <label for="agencyId">Izaberite agenciju</label>
     <select class="form-control col-sm-4" name="agencyId" [(ngModel)]="booking.agencyId" required>
       <option *ngFor="let agency of agencies" [value]="agency.id">
-        {{agency.name}}
+        {{ agency.name }}
       </option>
     </select>
 
@@ -36,7 +36,7 @@
       class="form-control col-sm-4"
       name="roomId"
       [(ngModel)]="booking.roomId">
-      <option *ngFor="let room of rooms">
+      <option *ngFor="let room of rooms" [value]="room.id">
             {{room.roomNumber}}
       </option>
     </select>
@@ -63,22 +63,22 @@
   </div>
 
   <div class="mb-5">
-      <label for="Price">Ukupna cijena</label>
-      <input type="text" name="country" value="Puno para" class="form-control col-sm-4" readonly>
+      <label for="Price"></label>
+      <input
+      type="text"  class="form-control col-sm-4" readonly>
   </div>
     <button (click)="goBack()" class="btn btn-outline-primary float-left">Odustani</button>
 
 
-    <button [disabled]="!booking.checkIn && !booking.checkOut && !booking.roomId"
-            type="submit"
+    <button [disabled]="!Form.form.valid"
             class="btn btn-primary ml-2 float-right"
             (click)="check()">
             Provjeri dostupnost</button>
 
-    <button [disabled]="!Form.form.valid && !isAvailable"
+    <button [disabled]="!Form.form.valid || !isAvailable"
             type="submit"
+            (click)="onSubmit()"
             class="btn btn-primary float-right">
             Submit</button>
-
   </form>
 </div>

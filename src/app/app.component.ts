@@ -6,5 +6,8 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  public user = {
+    is_admin: 0
+  };
   title = 'BookingCloneFrontend';
 }

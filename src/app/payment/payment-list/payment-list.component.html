@@ -19,7 +19,7 @@
               <td>{{ payment.price + ' kn'}}</td>
               <td>
                 <div *ngFor="let guest of guests">
-                  <div *ngIf="guest.id == payment.guestId">
+                  <div *ngIf="guest.id == payment.userId">
                       {{ guest.fullName }}
                   </div>
                 </div>

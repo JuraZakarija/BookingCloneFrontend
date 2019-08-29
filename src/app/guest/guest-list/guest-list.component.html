@@ -38,7 +38,10 @@
                   <i class="fa fa-edit fa-lg fa-fw"></i></button>
                 </td>
               <td>
-                <button class="btn delete" title="Ne mozete obrisati gosta ako je u bookingu." [disabled]="guest.bookingCount > 0" (click)="onDelete(guest.id)">
+                <button class="btn delete"
+                        title="Ne mozete obrisati gosta ako je u bookingu."
+                        [disabled]="guest.bookingCount > 0"
+                        (click)="onDelete(guest.id)">
                   <i class="fa fa-trash fa-lg fa-fw"></i></button></td>
           </tr>
       </tbody>
