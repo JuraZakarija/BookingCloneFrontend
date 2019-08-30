@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router} from '@angular/router';
 import { GuestService } from '../guest.service';
 import { ToastrService } from 'ngx-toastr';
 import { Location } from '@angular/common';
-
+import { JwtHelper } from 'src/app/auth/jwt.helper';
 
 @Component({
   selector: 'app-guest-form',
@@ -18,6 +18,7 @@ export class GuestFormComponent implements OnInit {
     private router: Router,
     private toastr: ToastrService,
     private location: Location,
+    private jwt: JwtHelper,
   ) { }
 
   public guest: any = {};
@@ -31,6 +32,7 @@ export class GuestFormComponent implements OnInit {
         this.getGuest(guestId);
       }
     });
+
   }
 
   onSubmit() {
@@ -40,6 +42,13 @@ export class GuestFormComponent implements OnInit {
     this.guestService.submit(this.guest).subscribe(
       (response: any) => {
         this.toastr.success('Success!');
+        this.router.navigate(['auth/register']);
+
+        const user = this.jwt.getUser();
+        if (user && user.role === 'Admin') {
+          return this.router.navigate(['users']);
+        }
+
         this.router.navigate(['login']);
       },
       (response: any) => {
@@ -47,6 +56,8 @@ export class GuestFormComponent implements OnInit {
         const firstKey = Object.keys(firstError)[0];
         this.errorMessage = firstError[firstKey][0];
       });
+
+    return false;
   }
 
   goBack() {

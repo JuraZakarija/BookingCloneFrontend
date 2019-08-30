@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
+import { JwtHelper } from '../auth/jwt.helper';
 
 @Injectable({
   providedIn: 'root'
@@ -8,7 +9,8 @@ import { environment } from 'src/environments/environment';
 export class GuestService {
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private jwt: JwtHelper
   ) { }
 
 private readonly GUESTS_URL = 'users';

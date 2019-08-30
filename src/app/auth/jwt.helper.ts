@@ -36,4 +36,8 @@ export class JwtHelper {
     public getFullToken() {
         return 'Bearer ' + this.getToken();
     }
+
+    public clear() {
+      localStorage.clear();
+    }
 }
